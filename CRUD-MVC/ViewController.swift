@@ -14,15 +14,10 @@ class ViewController: UIViewController {
     var movies = [Movie]()
     
     @IBOutlet weak var tableView: UITableView!
-    
-    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var yearTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
-  
-    
-    
-    
+     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(tableView)
