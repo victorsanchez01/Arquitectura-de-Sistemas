@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(tableView)
+        title = "Peliculas"
         self.tableView.delegate = self
         self.tableView.dataSource = self
         getMovies()
@@ -89,6 +90,39 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let editButton = UIContextualAction(style: .normal, title: "Editar") { (_, _, _) in
             
+            let alert = UIAlertController(title: "Editar Película", message: "Editar la información de la película", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel))
+            alert.addAction(UIAlertAction(title: "Guardar", style: .default, handler: { _ in
+                guard let fields = alert.textFields else { return }
+                
+                let titleField = fields[0]
+                let yearField = fields[1]
+                let descriptionField = fields[2]
+                
+                guard let title = titleField.text, !title.isEmpty,
+                      let year = yearField.text, !year.isEmpty,
+                      let description = descriptionField.text, !description.isEmpty else { return }
+                guard let id = movie.id else { return }
+                self.db.collection("movielist").document(id).setData(["title": title,
+                                                                      "year": year,
+                                                                      "description": description])
+            }))
+            alert.addTextField { field in
+                field.text = movie.title
+                field.returnKeyType = .next
+            }
+            alert.addTextField { field in
+                field.text = movie.year
+                field.returnKeyType = .next
+            }
+            alert.addTextField { field in
+                field.text = movie.description
+                field.autoresizesSubviews = true
+                field.returnKeyType = .done
+            }
+            
+            self.present(alert, animated: true)
         }
         
         let deleteButton = UIContextualAction(style: .destructive, title: "Delete") { (_, _, _) in
