@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var yearTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
-     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(tableView)
@@ -27,9 +27,12 @@ class ViewController: UIViewController {
         getMovies()
     }
     
+    //MARK: Agregar Películas
     @IBAction func addMovieBtn(_ sender: UIButton) {
         if self.titleTextField.text == "" || self.descriptionTextField.text == "" || self.yearTextField.text == "" {
-            print("EMPTY")
+            self.showAlert(
+                title: nil,
+                message: "Los campos no pueden estar vacíos, revise la información e intente de nuevo")
         } else {
             db.collection("movielist").addDocument(
                 data:
@@ -39,39 +42,60 @@ class ViewController: UIViewController {
                         "year": self.yearTextField.text!
                     ]
             )
-            self.titleTextField.text = ""
-            self.descriptionTextField.text = ""
-            self.yearTextField.text = ""
-            self.descriptionTextField.endEditing(true)
+            self.cleanFields()
+            self.showAlert(title: "Película gregada", message: "La película ha sido agregada satisfactoriamente")
         }
     }
     
+    //MARK: Obtener Películas
     func getMovies(){
         db.collection("movielist").addSnapshotListener { querySnapshot, error in
             if error != nil {
-                print("Error")
+                self.showAlert(title: nil, message: "Ocurrió un error al cargar la información")
                 return
             } else {
                 self.movies = []
                 for movie in querySnapshot?.documents ?? [] {
-                    self.movies.append(Movie(id: movie.documentID,
-                                             title: movie["title"] as? String ?? "",
-                                             description: movie["description"] as? String ?? "",
-                                             year: movie["year"] as? String ?? ""))
+                    self.movies.append(
+                        Movie(
+                            id: movie.documentID,
+                            title: movie["title"] as? String ?? "",
+                            description: movie["description"] as? String ?? "",
+                            year: movie["year"] as? String ?? "")
+                    )
                 }
                 self.tableView.reloadData()
             }
             
         }
     }
-
+    
+    //MARK: Mostrar alerta
+    func showAlert(title: String?, message: String) {
+        let alert = UIAlertController(title: title ?? "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alert, animated: true)
+    }
+    
+    //MARK: Limpiar campos de texto
+    func cleanFields() {
+        self.titleTextField.text = ""
+        self.descriptionTextField.text = ""
+        self.yearTextField.text = ""
+        self.titleTextField.endEditing(true)
+        self.descriptionTextField.endEditing(true)
+        self.yearTextField.endEditing(true)
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    //MARK: Obtener numero de filas de la tabla
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.movies.count
     }
     
+    //MARK: Asignar textos a las filas
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCellController
         cell.titleLabel.text = "Titulo: \(self.movies[indexPath.row].title)"
@@ -80,47 +104,75 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    //MARK: Funciones de editar y borrar
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let movie = self.movies[indexPath.row]
         
+        //MARK: Editar
         let editButton = UIContextualAction(style: .normal, title: "Editar") { (_, _, _) in
             
             let alert = UIAlertController(title: "Editar Película", message: "Editar la información de la película", preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel))
-            alert.addAction(UIAlertAction(title: "Guardar", style: .default, handler: { _ in
-                guard let fields = alert.textFields else { return }
-                
-                let titleField = fields[0]
-                let yearField = fields[1]
-                let descriptionField = fields[2]
-                
-                guard let title = titleField.text, !title.isEmpty,
-                      let year = yearField.text, !year.isEmpty,
-                      let description = descriptionField.text, !description.isEmpty else { return }
-                guard let id = movie.id else { return }
-                self.db.collection("movielist").document(id).setData(["title": title,
-                                                                      "year": year,
-                                                                      "description": description])
-            }))
+            //MARK: Campos de texto
             alert.addTextField { field in
                 field.text = movie.title
                 field.returnKeyType = .next
             }
+            
             alert.addTextField { field in
                 field.text = movie.year
                 field.returnKeyType = .next
             }
+            
             alert.addTextField { field in
                 field.text = movie.description
                 field.autoresizesSubviews = true
                 field.returnKeyType = .done
             }
             
+            //MARK: Botones de la alerta
+            alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel))
+            
+            alert.addAction(
+                UIAlertAction(
+                    title: "Guardar",
+                    style: .default,
+                    handler: { _ in
+                        guard let fields = alert.textFields, fields.count == 3 else { return }
+                        
+                        let titleField = fields[0]
+                        let yearField = fields[1]
+                        let descriptionField = fields[2]
+                        
+                        guard let title = titleField.text,
+                              !title.isEmpty,
+                              let year = yearField.text,
+                              !year.isEmpty,
+                              let description = descriptionField.text,
+                              !description.isEmpty else {
+                            self.showAlert(
+                                title: nil,
+                                message: "Los campos no pueden estar vacíos, revise la información e intente de nuevo")
+                            return }
+                        
+                        guard let id = movie.id else { return }
+                        
+                        self.db.collection("movielist")
+                            .document(id)
+                            .setData([
+                                "title": title,
+                                "year": year,
+                                "description": description
+                            ])
+                    }
+                )
+            )
+            
             self.present(alert, animated: true)
         }
         
-        let deleteButton = UIContextualAction(style: .destructive, title: "Delete") { (_, _, _) in
+        //MARK: Borrar
+        let deleteButton = UIContextualAction(style: .destructive, title: "Borrar") { (_, _, _) in
             self.db.collection("movielist").document(movie.id!).delete()
         }
         
@@ -129,9 +181,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return actions
     }
     
+    //MARK: Permitir edición de la fila
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-   
+    
 }
 
