@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseFirestore
 
-class ViewController: UIViewController {
+class MVCViewController: UIViewController {
     private var db = Firestore.firestore()
     private var listenerRegistration: ListenerRegistration?
     var movies = [Movie]()
@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(tableView)
-        title = "Peliculas"
+        title = "MVC"
         self.tableView.delegate = self
         self.tableView.dataSource = self
         getMovies()
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension MVCViewController: UITableViewDelegate, UITableViewDataSource {
     
     //MARK: Obtener numero de filas de la tabla
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

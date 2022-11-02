@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:CRUD-MVC.xcodeproj">
+      location = "group:/Users/victorsanchez/Library/Mobile Documents/com~apple~CloudDocs/Desarrollo/CRUD-MVC/ARQUITECTURA.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
