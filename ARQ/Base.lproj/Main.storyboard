@@ -17,6 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="lIH-bc-AUV"/>
@@ -60,7 +62,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Xzx-Gy-R8V">
-                                <rect key="frame" x="20" y="277" width="374" height="585"/>
+                                <rect key="frame" x="20" y="252.5" width="374" height="544.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="91" id="JQ9-o8-SJg" customClass="TableViewCellController" customModule="ARQ" customModuleProvider="target">
@@ -118,7 +120,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.90261651083075667" green="0.83913408578703708" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Xzx-Gy-R8V" firstAttribute="top" secondItem="0AA-ci-KUS" secondAttribute="bottom" constant="44.5" id="1yp-1D-cKa"/>
+                            <constraint firstItem="Xzx-Gy-R8V" firstAttribute="top" secondItem="0AA-ci-KUS" secondAttribute="bottom" constant="20" id="1yp-1D-cKa"/>
                             <constraint firstItem="0AA-ci-KUS" firstAttribute="top" secondItem="gWJ-9V-Yez" secondAttribute="bottom" constant="16" id="6aZ-Cn-xDc"/>
                             <constraint firstItem="0AA-ci-KUS" firstAttribute="leading" secondItem="F60-MC-Acf" secondAttribute="leading" id="8rK-1W-8bR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xzx-Gy-R8V" secondAttribute="trailing" constant="20" id="Ape-xX-lS8"/>
@@ -128,16 +130,18 @@
                             <constraint firstItem="0AA-ci-KUS" firstAttribute="leading" secondItem="gWJ-9V-Yez" secondAttribute="leading" id="OKh-MF-bqc"/>
                             <constraint firstItem="0AA-ci-KUS" firstAttribute="trailing" secondItem="gWJ-9V-Yez" secondAttribute="trailing" id="Pgc-df-oMb"/>
                             <constraint firstItem="F60-MC-Acf" firstAttribute="top" secondItem="df4-do-pjV" secondAttribute="bottom" constant="16" id="UIa-Hm-C84"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Xzx-Gy-R8V" secondAttribute="bottom" constant="-49" id="Y4N-B2-m8D"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="0AA-ci-KUS" secondAttribute="bottom" constant="400" id="aXS-Mz-0T3"/>
                             <constraint firstItem="0AA-ci-KUS" firstAttribute="trailing" secondItem="df4-do-pjV" secondAttribute="trailing" id="eOq-XE-9Kd"/>
+                            <constraint firstItem="Xzx-Gy-R8V" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-16" id="kfZ-sf-1k8"/>
                             <constraint firstItem="0AA-ci-KUS" firstAttribute="trailing" secondItem="F60-MC-Acf" secondAttribute="trailing" id="rmc-hV-2e0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="df4-do-pjV" secondAttribute="trailing" constant="20" id="skE-6D-oP5"/>
                             <constraint firstItem="Xzx-Gy-R8V" firstAttribute="leading" secondItem="0AA-ci-KUS" secondAttribute="leading" id="tpT-CM-jQO"/>
                             <constraint firstItem="0AA-ci-KUS" firstAttribute="leading" secondItem="df4-do-pjV" secondAttribute="leading" id="xhL-l9-jTO"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="MVC" image="gamecontroller" catalog="system" selectedImage="gamecontroller" id="3kl-TY-hBe"/>
+                    <tabBarItem key="tabBarItem" title="MVC" image="gamecontroller" catalog="system" selectedImage="gamecontroller" id="3kl-TY-hBe">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="fGi-SQ-fOK"/>
                     <connections>
                         <outlet property="descriptionTextField" destination="gWJ-9V-Yez" id="AxA-nr-mYI"/>
@@ -148,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-120" y="-100"/>
+            <point key="canvasLocation" x="292.75362318840581" y="-28.125"/>
         </scene>
         <!--SOA-->
         <scene sceneID="LZE-KU-fWA">
@@ -182,7 +186,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fJI-V4-cJl">
-                                <rect key="frame" x="20" y="277" width="374" height="585"/>
+                                <rect key="frame" x="20" y="252.5" width="374" height="545.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="91" id="UGw-Uu-dmr" customClass="TableViewCellController" customModule="ARQ" customModuleProvider="target">
@@ -238,10 +242,9 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jvD-iR-2AC"/>
-                        <color key="backgroundColor" red="0.99475707010523151" green="1" blue="0.85050152325805795" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.69849938667419176" green="0.69907435696013542" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="B3f-NF-VBB" firstAttribute="trailing" secondItem="5xV-rd-Tbh" secondAttribute="trailing" id="1vG-I4-P0w"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="fJI-V4-cJl" secondAttribute="bottom" constant="-49" id="4Ea-6g-caW"/>
                             <constraint firstItem="B3f-NF-VBB" firstAttribute="leading" secondItem="hpm-zR-Pus" secondAttribute="leading" id="9bU-n6-Bma"/>
                             <constraint firstItem="jvD-iR-2AC" firstAttribute="trailing" secondItem="Lte-cj-Qif" secondAttribute="trailing" constant="20" id="BFs-CO-cdh"/>
                             <constraint firstItem="B3f-NF-VBB" firstAttribute="leading" secondItem="Lte-cj-Qif" secondAttribute="leading" id="MyL-uM-A3q"/>
@@ -253,13 +256,16 @@
                             <constraint firstItem="hpm-zR-Pus" firstAttribute="top" secondItem="Lte-cj-Qif" secondAttribute="bottom" constant="16" id="aJA-sz-58t"/>
                             <constraint firstItem="jvD-iR-2AC" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="B3f-NF-VBB" secondAttribute="bottom" constant="400" id="dPe-SM-K9G"/>
                             <constraint firstItem="B3f-NF-VBB" firstAttribute="leading" secondItem="5xV-rd-Tbh" secondAttribute="leading" id="g5j-q2-Jg1"/>
-                            <constraint firstItem="fJI-V4-cJl" firstAttribute="top" secondItem="B3f-NF-VBB" secondAttribute="bottom" constant="44.5" id="nKI-Ov-Rho"/>
+                            <constraint firstItem="jvD-iR-2AC" firstAttribute="bottom" secondItem="fJI-V4-cJl" secondAttribute="bottom" constant="15" id="mR5-7l-8Hd"/>
+                            <constraint firstItem="fJI-V4-cJl" firstAttribute="top" secondItem="B3f-NF-VBB" secondAttribute="bottom" constant="20" id="nKI-Ov-Rho"/>
                             <constraint firstItem="Lte-cj-Qif" firstAttribute="leading" secondItem="jvD-iR-2AC" secondAttribute="leading" constant="20" id="qNE-qD-qcj"/>
                             <constraint firstItem="fJI-V4-cJl" firstAttribute="leading" secondItem="B3f-NF-VBB" secondAttribute="leading" id="uJn-FH-WtV"/>
                             <constraint firstItem="Lte-cj-Qif" firstAttribute="top" secondItem="jvD-iR-2AC" secondAttribute="top" id="x8o-ri-j8W"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="SOA" image="xserve" catalog="system" selectedImage="xserve" id="xfh-76-2zY"/>
+                    <tabBarItem key="tabBarItem" title="SOA" image="xserve" catalog="system" selectedImage="xserve" id="xfh-76-2zY">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="bWl-YA-9Mx"/>
                     <connections>
                         <outlet property="descriptionTextField" destination="5xV-rd-Tbh" id="wsb-Ly-0rW"/>
@@ -270,7 +276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sgE-Hl-uyc" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="674" y="-100"/>
+            <point key="canvasLocation" x="989.85507246376824" y="-28.125"/>
         </scene>
         <!--CAPAS-->
         <scene sceneID="bQC-OB-5Ll">
@@ -304,7 +310,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Yo5-jQ-1vg">
-                                <rect key="frame" x="20" y="277" width="374" height="585"/>
+                                <rect key="frame" x="20" y="252.5" width="374" height="545.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="91" id="0Zj-fI-GMb" customClass="TableViewCellController" customModule="ARQ" customModuleProvider="target">
@@ -362,8 +368,7 @@
                         <viewLayoutGuide key="safeArea" id="5zE-yU-Svt"/>
                         <color key="backgroundColor" red="0.7991381021098356" green="0.89734656856548167" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="Yo5-jQ-1vg" firstAttribute="top" secondItem="umH-YX-rr4" secondAttribute="bottom" constant="44.5" id="096-n6-O3B"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Yo5-jQ-1vg" secondAttribute="bottom" constant="-49" id="8h8-lc-UGV"/>
+                            <constraint firstItem="Yo5-jQ-1vg" firstAttribute="top" secondItem="umH-YX-rr4" secondAttribute="bottom" constant="20" id="096-n6-O3B"/>
                             <constraint firstItem="Yo5-jQ-1vg" firstAttribute="leading" secondItem="umH-YX-rr4" secondAttribute="leading" id="A5e-uu-1jr"/>
                             <constraint firstItem="umH-YX-rr4" firstAttribute="top" secondItem="e9c-Pe-RDW" secondAttribute="bottom" constant="16" id="DMM-dl-ftc"/>
                             <constraint firstItem="umH-YX-rr4" firstAttribute="leading" secondItem="cKb-k5-BFh" secondAttribute="leading" id="E8i-zA-t23"/>
@@ -374,6 +379,7 @@
                             <constraint firstItem="5zE-yU-Svt" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="umH-YX-rr4" secondAttribute="bottom" constant="400" id="Xvm-90-AuV"/>
                             <constraint firstItem="cKb-k5-BFh" firstAttribute="leading" secondItem="5zE-yU-Svt" secondAttribute="leading" constant="20" id="aUg-hO-12t"/>
                             <constraint firstItem="5zE-yU-Svt" firstAttribute="trailing" secondItem="cKb-k5-BFh" secondAttribute="trailing" constant="20" id="cg0-QV-VGg"/>
+                            <constraint firstItem="5zE-yU-Svt" firstAttribute="bottom" secondItem="Yo5-jQ-1vg" secondAttribute="bottom" constant="15" id="jtu-BB-Orc"/>
                             <constraint firstItem="cKb-k5-BFh" firstAttribute="top" secondItem="5zE-yU-Svt" secondAttribute="top" id="qtS-Ch-XDD"/>
                             <constraint firstItem="umH-YX-rr4" firstAttribute="trailing" secondItem="cKb-k5-BFh" secondAttribute="trailing" id="tLi-5z-2lp"/>
                             <constraint firstItem="umH-YX-rr4" firstAttribute="trailing" secondItem="kr0-7k-i0d" secondAttribute="trailing" id="uss-5o-msi"/>
@@ -381,7 +387,9 @@
                             <constraint firstItem="umH-YX-rr4" firstAttribute="leading" secondItem="e9c-Pe-RDW" secondAttribute="leading" id="wph-Kv-W7X"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="CAPAS" image="square.3.layers.3d.down.backward" catalog="system" selectedImage="square.3.layers.3d.down.backward" id="PiZ-Z6-YV4"/>
+                    <tabBarItem key="tabBarItem" title="CAPAS" image="square.3.layers.3d.down.backward" catalog="system" selectedImage="square.3.layers.3d.down.backward" id="PiZ-Z6-YV4">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="eNd-xE-oxG"/>
                     <connections>
                         <outlet property="descriptionTextField" destination="e9c-Pe-RDW" id="yIx-rA-rjV"/>
@@ -392,7 +400,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ya-yo-bnI" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1400" y="-100"/>
+            <point key="canvasLocation" x="1679.7101449275362" y="-28.125"/>
         </scene>
     </scenes>
     <resources>
