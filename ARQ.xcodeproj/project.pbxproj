@@ -56,12 +56,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1119BA9F291354FD002A8B89 /* ApplicationLayer */ = {
+		1119BA9F291354FD002A8B89 /* ApplicationService */ = {
 			isa = PBXGroup;
 			children = (
 				581EF32B290ADD5C00F01AB0 /* AppDelegate.swift */,
 			);
-			path = ApplicationLayer;
+			path = ApplicationService;
+			sourceTree = "<group>";
+		};
+		1119BAAC29137DC5002A8B89 /* DataService */ = {
+			isa = PBXGroup;
+			children = (
+				1119BA9D2913485B002A8B89 /* DatabaseService.swift */,
+			);
+			path = DataService;
+			sourceTree = "<group>";
+		};
+		1119BAAD29137EBF002A8B89 /* ServiceRegistration */ = {
+			isa = PBXGroup;
+			children = (
+				1119BAA02913559D002A8B89 /* Service.swift */,
+			);
+			path = ServiceRegistration;
 			sourceTree = "<group>";
 		};
 		119995A22912D98A00711541 /* MVC */ = {
@@ -84,10 +100,10 @@
 		11BBEFF22912ED500064C55D /* SOA */ = {
 			isa = PBXGroup;
 			children = (
-				1119BA9F291354FD002A8B89 /* ApplicationLayer */,
 				1199959E2912C39D00711541 /* SOAViewController.swift */,
-				1119BA9D2913485B002A8B89 /* DatabaseService.swift */,
-				1119BAA02913559D002A8B89 /* Service.swift */,
+				1119BA9F291354FD002A8B89 /* ApplicationService */,
+				1119BAAC29137DC5002A8B89 /* DataService */,
+				1119BAAD29137EBF002A8B89 /* ServiceRegistration */,
 			);
 			path = SOA;
 			sourceTree = "<group>";

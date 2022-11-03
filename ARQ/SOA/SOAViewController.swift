@@ -1,6 +1,6 @@
 //
 //  SOAViewController.swift
-//  CRUD-MVC
+//  ARQ
 //
 //  Created by Victor Sanchez on 2/11/22.
 //
@@ -33,16 +33,19 @@ class SOAViewController: UIViewController {
                 title: nil,
                 message: "Los campos no pueden estar vacíos, revise la información e intente de nuevo")
         } else {
-//            databaseService.collection("movielist").addDocument(
-//                data:
-//                    [
-//                        "title": self.titleTextField.text!,
-//                        "description": self.descriptionTextField.text!,
-//                        "year": self.yearTextField.text!
-//                    ]
-//            )
-            self.cleanFields()
-            self.showAlert(title: "Película gregada", message: "La película ha sido agregada satisfactoriamente")
+            databaseService
+                .addMovie(
+                    title: self.titleTextField.text!,
+                    description: self.descriptionTextField.text!,
+                    year: self.yearTextField.text!) { result in
+                        switch result {
+                            case .success(_):
+                                self.cleanFields()
+                                self.showAlert(title: "Película gregada", message: "La película ha sido agregada satisfactoriamente")
+                            case .failure(_):
+                                self.showAlert(title: nil, message: "Error al agregar la película")
+                        }
+                    }
         }
     }
     
@@ -54,7 +57,6 @@ class SOAViewController: UIViewController {
         } failure: { error in
             self.showAlert(title: nil, message: "Ocurrió un error al cargar la información")
         }
-        
     }
     
     //MARK: Mostrar alerta
@@ -144,13 +146,7 @@ extension SOAViewController: UITableViewDelegate, UITableViewDataSource {
                         
                         guard let id = movie.id else { return }
                         
-//                        self.db.collection("movielist")
-//                            .document(id)
-//                            .setData([
-//                                "title": title,
-//                                "year": year,
-//                                "description": description
-//                            ])
+                        self.databaseService.editMovie(id: id, title: title, description: description, year: year)
                     }
                 )
             )
@@ -160,7 +156,7 @@ extension SOAViewController: UITableViewDelegate, UITableViewDataSource {
         
         //MARK: Borrar
         let deleteButton = UIContextualAction(style: .destructive, title: "Borrar") { (_, _, _) in
-//            self.db.collection("movielist").document(movie.id!).delete()
+            self.databaseService.deleteMovie(id: movie.id!)
         }
         
         let actions = UISwipeActionsConfiguration(actions: [deleteButton, editButton])
