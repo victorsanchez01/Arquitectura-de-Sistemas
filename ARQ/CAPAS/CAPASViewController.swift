@@ -6,10 +6,26 @@
 import UIKit
 import FirebaseFirestore
 
-class CAPASViewController: UIViewController {
-    private var db = Firestore.firestore()
-    private var listenerRegistration: ListenerRegistration?
-    var movies = [Movie]()
+protocol ListMoviesDisplayLogic: AnyObject
+{
+    func displayFetchedMovies(viewModel: ListMovies.FetchMovies.ViewModel)
+}
+
+class CAPASViewController: UIViewController, ListMoviesDisplayLogic {
+    
+    var interactor: ListMoviesBusinessLogic?
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        setup()
+    }
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleTextField: UITextField!
@@ -22,7 +38,17 @@ class CAPASViewController: UIViewController {
         title = "CAPAS"
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        getMovies()
+        fetchMovies()
+    }
+    
+    private func setup()
+    {
+        let viewController = self
+        let interactor = ListMoviesInteractor()
+        let presenter = ListMoviesPresenter()
+        viewController.interactor = interactor
+        interactor.presenter = presenter
+        presenter.viewController = viewController
     }
     
     //MARK: Agregar Películas
@@ -32,39 +58,11 @@ class CAPASViewController: UIViewController {
                 title: nil,
                 message: "Los campos no pueden estar vacíos, revise la información e intente de nuevo")
         } else {
-            db.collection("movielist").addDocument(
-                data:
-                    [
-                        "title": self.titleTextField.text!,
-                        "description": self.descriptionTextField.text!,
-                        "year": self.yearTextField.text!
-                    ]
-            )
-            self.cleanFields()
-            self.showAlert(title: "Película gregada", message: "La película ha sido agregada satisfactoriamente")
-        }
-    }
-    
-    //MARK: Obtener Películas
-    func getMovies(){
-        db.collection("movielist").addSnapshotListener { querySnapshot, error in
-            if error != nil {
-                self.showAlert(title: nil, message: "Ocurrió un error al cargar la información")
-                return
-            } else {
-                self.movies = []
-                for movie in querySnapshot?.documents ?? [] {
-                    self.movies.append(
-                        Movie(
-                            id: movie.documentID,
-                            title: movie["title"] as? String ?? "",
-                            description: movie["description"] as? String ?? "",
-                            year: movie["year"] as? String ?? "")
-                    )
-                }
-                self.tableView.reloadData()
-            }
+            let movie = ListMovies.FetchMovies.Add(title: self.titleTextField.text!, description: self.descriptionTextField.text!, year: self.yearTextField.text!)
+            interactor?.addMovies(movie: movie)
             
+            self.cleanFields()
+            self.showAlert(title: "Película agregada", message: "La película ha sido agregada satisfactoriamente")
         }
     }
     
@@ -84,27 +82,41 @@ class CAPASViewController: UIViewController {
         self.descriptionTextField.endEditing(true)
         self.yearTextField.endEditing(true)
     }
+    
+    
+    var displayedMovies: [ListMovies.FetchMovies.ViewModel.DisplayedMovies] = []
+    
+    func fetchMovies() {
+        let request = ListMovies.FetchMovies.Request()
+        interactor?.fetchMovies(request: request)
+    }
+    
+    func displayFetchedMovies(viewModel: ListMovies.FetchMovies.ViewModel) {
+        displayedMovies = viewModel.displayedMovies
+        tableView.reloadData()
+    }
 }
 
 extension CAPASViewController: UITableViewDelegate, UITableViewDataSource {
     
     //MARK: Obtener numero de filas de la tabla
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.movies.count
+        return displayedMovies.count
     }
     
     //MARK: Asignar textos a las filas
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let movie = displayedMovies[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCellController
-        cell.titleLabel.text = "Titulo: \(self.movies[indexPath.row].title)"
-        cell.yearLabel.text = "Año: \(self.movies[indexPath.row].year)"
-        cell.descriptionLabel.text = "Descripción: \(self.movies[indexPath.row].description)"
+        cell.titleLabel.text = "Titulo: \(movie.title)"
+        cell.yearLabel.text = "Año: \(movie.year)"
+        cell.descriptionLabel.text = "Descripción: \(movie.description)"
         return cell
     }
     
     //MARK: Funciones de editar y borrar
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let movie = self.movies[indexPath.row]
+        let movie = self.displayedMovies[indexPath.row]
         
         //MARK: Editar
         let editButton = UIContextualAction(style: .normal, title: "Editar") { (_, _, _) in
@@ -155,13 +167,7 @@ extension CAPASViewController: UITableViewDelegate, UITableViewDataSource {
                         
                         guard let id = movie.id else { return }
                         
-                        self.db.collection("movielist")
-                            .document(id)
-                            .setData([
-                                "title": title,
-                                "year": year,
-                                "description": description
-                            ])
+                        
                     }
                 )
             )
@@ -171,7 +177,7 @@ extension CAPASViewController: UITableViewDelegate, UITableViewDataSource {
         
         //MARK: Borrar
         let deleteButton = UIContextualAction(style: .destructive, title: "Borrar") { (_, _, _) in
-            self.db.collection("movielist").document(movie.id!).delete()
+            
         }
         
         let actions = UISwipeActionsConfiguration(actions: [deleteButton, editButton])

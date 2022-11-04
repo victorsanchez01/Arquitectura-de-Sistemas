@@ -42,7 +42,7 @@ class MVCViewController: UIViewController {
                     ]
             )
             self.cleanFields()
-            self.showAlert(title: "Película gregada", message: "La película ha sido agregada satisfactoriamente")
+            self.showAlert(title: "Película agregada", message: "La película ha sido agregada satisfactoriamente")
         }
     }
     

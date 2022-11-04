@@ -11,6 +11,11 @@
 		1119BAA12913559D002A8B89 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1119BAA02913559D002A8B89 /* Service.swift */; };
 		1199959F2912C39D00711541 /* SOAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199959E2912C39D00711541 /* SOAViewController.swift */; };
 		119995A12912C54600711541 /* CAPASViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119995A02912C54600711541 /* CAPASViewController.swift */; };
+		119FB7AB29149F7700B7DB23 /* CAPASInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119FB7AA29149F7700B7DB23 /* CAPASInteractor.swift */; };
+		119FB7AD2914A7CB00B7DB23 /* CAPASModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119FB7AC2914A7CB00B7DB23 /* CAPASModels.swift */; };
+		119FB7AF2914A8CB00B7DB23 /* CAPASWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119FB7AE2914A8CB00B7DB23 /* CAPASWorker.swift */; };
+		119FB7B12914A97500B7DB23 /* CAPASApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119FB7B02914A97500B7DB23 /* CAPASApi.swift */; };
+		119FB7B32914AC6D00B7DB23 /* CAPASPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119FB7B22914AC6D00B7DB23 /* CAPASPresenter.swift */; };
 		11DFB57A290B99BB005D3E2E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DFB579290B99BB005D3E2E /* Movie.swift */; };
 		581EF32C290ADD5C00F01AB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581EF32B290ADD5C00F01AB0 /* AppDelegate.swift */; };
 		581EF32E290ADD5C00F01AB0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581EF32D290ADD5C00F01AB0 /* SceneDelegate.swift */; };
@@ -29,6 +34,11 @@
 		1119BAA02913559D002A8B89 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		1199959E2912C39D00711541 /* SOAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOAViewController.swift; sourceTree = "<group>"; };
 		119995A02912C54600711541 /* CAPASViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPASViewController.swift; sourceTree = "<group>"; };
+		119FB7AA29149F7700B7DB23 /* CAPASInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPASInteractor.swift; sourceTree = "<group>"; };
+		119FB7AC2914A7CB00B7DB23 /* CAPASModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPASModels.swift; sourceTree = "<group>"; };
+		119FB7AE2914A8CB00B7DB23 /* CAPASWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPASWorker.swift; sourceTree = "<group>"; };
+		119FB7B02914A97500B7DB23 /* CAPASApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPASApi.swift; sourceTree = "<group>"; };
+		119FB7B22914AC6D00B7DB23 /* CAPASPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPASPresenter.swift; sourceTree = "<group>"; };
 		11DFB579290B99BB005D3E2E /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		299335AD26C35D71E23CE757 /* Pods-ARQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARQ.debug.xcconfig"; path = "Target Support Files/Pods-ARQ/Pods-ARQ.debug.xcconfig"; sourceTree = "<group>"; };
 		3023002141FE9DE2D63599E7 /* Pods-ARQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARQ.release.xcconfig"; path = "Target Support Files/Pods-ARQ/Pods-ARQ.release.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +122,11 @@
 			isa = PBXGroup;
 			children = (
 				119995A02912C54600711541 /* CAPASViewController.swift */,
+				119FB7AA29149F7700B7DB23 /* CAPASInteractor.swift */,
+				119FB7AC2914A7CB00B7DB23 /* CAPASModels.swift */,
+				119FB7AE2914A8CB00B7DB23 /* CAPASWorker.swift */,
+				119FB7B02914A97500B7DB23 /* CAPASApi.swift */,
+				119FB7B22914AC6D00B7DB23 /* CAPASPresenter.swift */,
 			);
 			path = CAPAS;
 			sourceTree = "<group>";
@@ -294,11 +309,16 @@
 			files = (
 				581EF330290ADD5C00F01AB0 /* MVCViewController.swift in Sources */,
 				581EF32C290ADD5C00F01AB0 /* AppDelegate.swift in Sources */,
+				119FB7B12914A97500B7DB23 /* CAPASApi.swift in Sources */,
+				119FB7AF2914A8CB00B7DB23 /* CAPASWorker.swift in Sources */,
 				1199959F2912C39D00711541 /* SOAViewController.swift in Sources */,
+				119FB7B32914AC6D00B7DB23 /* CAPASPresenter.swift in Sources */,
+				119FB7AD2914A7CB00B7DB23 /* CAPASModels.swift in Sources */,
 				581EF34A290B6EB400F01AB0 /* TableViewCellController.swift in Sources */,
 				119995A12912C54600711541 /* CAPASViewController.swift in Sources */,
 				1119BAA12913559D002A8B89 /* Service.swift in Sources */,
 				581EF32E290ADD5C00F01AB0 /* SceneDelegate.swift in Sources */,
+				119FB7AB29149F7700B7DB23 /* CAPASInteractor.swift in Sources */,
 				1119BA9E2913485B002A8B89 /* DatabaseService.swift in Sources */,
 				11DFB57A290B99BB005D3E2E /* Movie.swift in Sources */,
 			);

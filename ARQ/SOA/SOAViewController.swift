@@ -41,7 +41,7 @@ class SOAViewController: UIViewController {
                         switch result {
                             case .success(_):
                                 self.cleanFields()
-                                self.showAlert(title: "Película gregada", message: "La película ha sido agregada satisfactoriamente")
+                                self.showAlert(title: "Película agregada", message: "La película ha sido agregada satisfactoriamente")
                             case .failure(_):
                                 self.showAlert(title: nil, message: "Error al agregar la película")
                         }
