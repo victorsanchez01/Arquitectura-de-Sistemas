@@ -1,5 +1,5 @@
 //
-//  SOAViewController.swift
+//  APIViewController.swift
 //  ARQ
 //
 //  Created by Victor Sanchez on 2/11/22.
@@ -7,10 +7,11 @@
 
 import UIKit
 
-class SOAViewController: UIViewController {
+class APIViewController: UIViewController {
     
     let databaseService = ServiceRegistry.databaseService
-    var movies = [Movie]()
+    var movies = [MovieAPIModel]()
+    var rows = 0
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleTextField: UITextField!
@@ -20,10 +21,34 @@ class SOAViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(tableView)
-        title = "SOA"
+        title = "API"
+        let reloadButton = UIBarButtonItem(title: "Reload posts", style: .done, target: self, action: #selector(loadPosts))
+        self.navigationItem.rightBarButtonItem = reloadButton
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        getMovies()
+        self.getMovies(){ result in
+            switch result {
+                case .success(_):
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                case .failure(_):
+                    print("Error")
+            }
+        }
+    }
+    
+    @objc func loadPosts(){
+        self.getMovies(){ result in
+            switch result {
+                case .success(_):
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                case .failure(_):
+                    print("Error")
+            }
+        }
     }
     
     //MARK: Agregar Películas
@@ -50,14 +75,17 @@ class SOAViewController: UIViewController {
     }
     
     //MARK: Obtener Películas
-    func getMovies(){
-        databaseService.getMovies { movies in
-            self.movies = movies
-            self.tableView.reloadData()
-        } failure: { error in
-            self.showAlert(title: nil, message: "Ocurrió un error al cargar la información")
-        }
-    }
+//    func getMovies(){
+//            self.databaseService.getMovies { movies in
+//                self.movies = [movies]
+//            } failure: { error in
+//                self.showAlert(title: nil, message: "Ocurrió un error al cargar la información")
+//            }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+//            print(self.movies[0].movies.count)
+//            self.tableView.reloadData()
+//        }
+//    }
     
     //MARK: Mostrar alerta
     func showAlert(title: String?, message: String) {
@@ -77,25 +105,25 @@ class SOAViewController: UIViewController {
     }
 }
 
-extension SOAViewController: UITableViewDelegate, UITableViewDataSource {
+extension APIViewController: UITableViewDelegate, UITableViewDataSource {
     
     //MARK: Obtener numero de filas de la tabla
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.movies.count
+        return self.rows
     }
     
     //MARK: Asignar textos a las filas
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCellController
-        cell.titleLabel.text = "Titulo: \(self.movies[indexPath.row].title)"
-        cell.yearLabel.text = "Año: \(self.movies[indexPath.row].year)"
-        cell.descriptionLabel.text = "Descripción: \(self.movies[indexPath.row].description)"
+        cell.titleLabel.text = "Titulo: \(self.movies[0].movies[indexPath.row].fields.title)"
+        cell.yearLabel.text = "Año: \(self.movies[0].movies[indexPath.row].fields.year)"
+        cell.descriptionLabel.text = "Descripción: \(self.movies[0].movies[indexPath.row].fields.description)"
         return cell
     }
     
     //MARK: Funciones de editar y borrar
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let movie = self.movies[indexPath.row]
+        let movie = self.movies[0].movies[indexPath.row]
         
         //MARK: Editar
         let editButton = UIContextualAction(style: .normal, title: "Editar") { (_, _, _) in
@@ -104,17 +132,17 @@ extension SOAViewController: UITableViewDelegate, UITableViewDataSource {
             
             //MARK: Campos de texto
             alert.addTextField { field in
-                field.text = movie.title
+                field.text = movie.fields.title
                 field.returnKeyType = .next
             }
             
             alert.addTextField { field in
-                field.text = movie.year
+                field.text = movie.fields.year
                 field.returnKeyType = .next
             }
             
             alert.addTextField { field in
-                field.text = movie.description
+                field.text = movie.fields.description
                 field.autoresizesSubviews = true
                 field.returnKeyType = .done
             }
@@ -144,7 +172,7 @@ extension SOAViewController: UITableViewDelegate, UITableViewDataSource {
                                 message: "Los campos no pueden estar vacíos, revise la información e intente de nuevo")
                             return }
                         
-                        guard let id = movie.id else { return }
+                        guard let id = movie.name else { return }
                         
                         self.databaseService.editMovie(id: id, title: title, description: description, year: year)
                     }
@@ -156,19 +184,42 @@ extension SOAViewController: UITableViewDelegate, UITableViewDataSource {
         
         //MARK: Borrar
         let deleteButton = UIContextualAction(style: .destructive, title: "Borrar") { (_, _, _) in
-            self.databaseService.deleteMovie(id: movie.id!)
+            self.databaseService.deleteMovie(id: movie.name!)
         }
         
         let actions = UISwipeActionsConfiguration(actions: [deleteButton, editButton])
         
         return actions
     }
-    
     //MARK: Permitir edición de la fila
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
+}
+
+extension APIViewController {
+    
+    func getMovies(completion: @escaping (Result<Bool, Error>) -> Void) {
+        let url: URL = URL(string: "https://firestore.googleapis.com/v1/projects/arq-de-software-2022/databases/(default)/documents/movielist")!
+            let task = URLSession.shared.dataTask(with: url) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(error!))
+                    return
+                }
+                do {
+                    let dataReceived = try JSONDecoder().decode(MovieAPIModel.self, from: data)
+                    self.movies = [dataReceived]
+                    self.rows = dataReceived.movies.count
+                    print(self.movies[0].movies)
+                    completion(.success(true))
+                } catch {
+                    print(error.localizedDescription)
+                    completion(.failure(error))
+                }
+            }
+            task.resume()
+    }
 }
 
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="82i-YR-Hei">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="82i-YR-Hei">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,16 +21,16 @@
                         <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="lIH-bc-AUV"/>
-                        <segue destination="njd-0t-f6r" kind="relationship" relationship="viewControllers" id="cit-ak-tDO"/>
-                        <segue destination="1v5-Da-kjy" kind="relationship" relationship="viewControllers" id="k3s-6w-JsF"/>
+                        <segue destination="ueS-67-7Jh" kind="relationship" relationship="viewControllers" id="lIH-bc-AUV"/>
+                        <segue destination="A9g-Ew-0mA" kind="relationship" relationship="viewControllers" id="cit-ak-tDO"/>
+                        <segue destination="DzI-6c-DhQ" kind="relationship" relationship="viewControllers" id="k3s-6w-JsF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w4j-XB-AhM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="991" y="-747"/>
         </scene>
-        <!--MVC-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MVCViewController" customModule="ARQ" customModuleProvider="target" sceneMemberID="viewController">
@@ -39,22 +39,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Título de la película" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="df4-do-pjV">
-                                <rect key="frame" x="20" y="48" width="374" height="34"/>
+                                <rect key="frame" x="20" y="92" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Año" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F60-MC-Acf">
-                                <rect key="frame" x="20" y="98" width="374" height="34"/>
+                                <rect key="frame" x="20" y="142" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Descripción" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gWJ-9V-Yez">
-                                <rect key="frame" x="20" y="148" width="374" height="34"/>
+                                <rect key="frame" x="20" y="192" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0AA-ci-KUS">
-                                <rect key="frame" x="20" y="198" width="374" height="34.5"/>
+                                <rect key="frame" x="20" y="242" width="374" height="34.5"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Añadir Película"/>
                                 <connections>
@@ -62,7 +62,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Xzx-Gy-R8V">
-                                <rect key="frame" x="20" y="252.5" width="374" height="544.5"/>
+                                <rect key="frame" x="20" y="296.5" width="374" height="500.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="91" id="JQ9-o8-SJg" customClass="TableViewCellController" customModule="ARQ" customModuleProvider="target">
@@ -139,9 +139,6 @@
                             <constraint firstItem="0AA-ci-KUS" firstAttribute="leading" secondItem="df4-do-pjV" secondAttribute="leading" id="xhL-l9-jTO"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="MVC" image="gamecontroller" catalog="system" selectedImage="gamecontroller" id="3kl-TY-hBe">
-                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBarItem>
                     <navigationItem key="navigationItem" id="fGi-SQ-fOK"/>
                     <connections>
                         <outlet property="descriptionTextField" destination="gWJ-9V-Yez" id="AxA-nr-mYI"/>
@@ -152,33 +149,33 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="292.75362318840581" y="-28.125"/>
+            <point key="canvasLocation" x="1202.8985507246377" y="-28.125"/>
         </scene>
-        <!--SOA-->
+        <!--View Controller-->
         <scene sceneID="LZE-KU-fWA">
             <objects>
-                <viewController id="njd-0t-f6r" customClass="SOAViewController" customModule="ARQ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="njd-0t-f6r" customClass="APIViewController" customModule="ARQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A8E-rG-ppR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Título de la película" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lte-cj-Qif">
-                                <rect key="frame" x="20" y="48" width="374" height="34"/>
+                                <rect key="frame" x="20" y="92" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Año" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hpm-zR-Pus">
-                                <rect key="frame" x="20" y="98" width="374" height="34"/>
+                                <rect key="frame" x="20" y="142" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Descripción" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xV-rd-Tbh">
-                                <rect key="frame" x="20" y="148" width="374" height="34"/>
+                                <rect key="frame" x="20" y="192" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3f-NF-VBB">
-                                <rect key="frame" x="20" y="198" width="374" height="34.5"/>
+                                <rect key="frame" x="20" y="242" width="374" height="34.5"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Añadir Película"/>
                                 <connections>
@@ -186,7 +183,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fJI-V4-cJl">
-                                <rect key="frame" x="20" y="252.5" width="374" height="545.5"/>
+                                <rect key="frame" x="20" y="296.5" width="374" height="501.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="91" id="UGw-Uu-dmr" customClass="TableViewCellController" customModule="ARQ" customModuleProvider="target">
@@ -263,9 +260,6 @@
                             <constraint firstItem="Lte-cj-Qif" firstAttribute="top" secondItem="jvD-iR-2AC" secondAttribute="top" id="x8o-ri-j8W"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="SOA" image="xserve" catalog="system" selectedImage="xserve" id="xfh-76-2zY">
-                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBarItem>
                     <navigationItem key="navigationItem" id="bWl-YA-9Mx"/>
                     <connections>
                         <outlet property="descriptionTextField" destination="5xV-rd-Tbh" id="wsb-Ly-0rW"/>
@@ -276,9 +270,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sgE-Hl-uyc" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="989.85507246376824" y="-28.125"/>
+            <point key="canvasLocation" x="2810.144927536232" y="-28.125"/>
         </scene>
-        <!--CAPAS-->
+        <!--View Controller-->
         <scene sceneID="bQC-OB-5Ll">
             <objects>
                 <viewController id="1v5-Da-kjy" customClass="CAPASViewController" customModule="ARQ" customModuleProvider="target" sceneMemberID="viewController">
@@ -287,22 +281,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Título de la película" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cKb-k5-BFh">
-                                <rect key="frame" x="20" y="48" width="374" height="34"/>
+                                <rect key="frame" x="20" y="92" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Año" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kr0-7k-i0d">
-                                <rect key="frame" x="20" y="98" width="374" height="34"/>
+                                <rect key="frame" x="20" y="142" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Descripción" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e9c-Pe-RDW">
-                                <rect key="frame" x="20" y="148" width="374" height="34"/>
+                                <rect key="frame" x="20" y="192" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umH-YX-rr4">
-                                <rect key="frame" x="20" y="198" width="374" height="34.5"/>
+                                <rect key="frame" x="20" y="242" width="374" height="34.5"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Añadir Película"/>
                                 <connections>
@@ -310,7 +304,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Yo5-jQ-1vg">
-                                <rect key="frame" x="20" y="252.5" width="374" height="545.5"/>
+                                <rect key="frame" x="20" y="296.5" width="374" height="501.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="91" id="0Zj-fI-GMb" customClass="TableViewCellController" customModule="ARQ" customModuleProvider="target">
@@ -387,9 +381,6 @@
                             <constraint firstItem="umH-YX-rr4" firstAttribute="leading" secondItem="e9c-Pe-RDW" secondAttribute="leading" id="wph-Kv-W7X"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="CAPAS" image="square.3.layers.3d.down.backward" catalog="system" selectedImage="square.3.layers.3d.down.backward" id="PiZ-Z6-YV4">
-                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBarItem>
                     <navigationItem key="navigationItem" id="eNd-xE-oxG"/>
                     <connections>
                         <outlet property="descriptionTextField" destination="e9c-Pe-RDW" id="yIx-rA-rjV"/>
@@ -400,7 +391,70 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ya-yo-bnI" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1679.7101449275362" y="-28.125"/>
+            <point key="canvasLocation" x="4410.144927536232" y="-28.125"/>
+        </scene>
+        <!--API-->
+        <scene sceneID="4Tt-We-kXr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A9g-Ew-0mA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="API" image="xserve" catalog="system" selectedImage="xserve" id="xfh-76-2zY" userLabel="API">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wgv-ul-Nkq">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="njd-0t-f6r" kind="relationship" relationship="rootViewController" id="pJg-uh-ngG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dLs-lD-Jk5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1900.0000000000002" y="-28.125"/>
+        </scene>
+        <!--MVC-->
+        <scene sceneID="M4D-VM-Gst">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ueS-67-7Jh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="MVC" image="gamecontroller" catalog="system" selectedImage="gamecontroller" id="3kl-TY-hBe">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gdj-fT-Jgc">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="qF9-2h-t64"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uSn-AF-8os" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="292.75362318840581" y="-28.125"/>
+        </scene>
+        <!--CAPAS-->
+        <scene sceneID="X1j-Z7-jE7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DzI-6c-DhQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="CAPAS" image="square.3.layers.3d.down.backward" catalog="system" selectedImage="square.3.layers.3d.down.backward" id="PiZ-Z6-YV4">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yIa-sP-Uiu">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1v5-Da-kjy" kind="relationship" relationship="rootViewController" id="2YZ-cf-iYp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ahs-sz-RJY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3500.0000000000005" y="-28.125"/>
         </scene>
     </scenes>
     <resources>

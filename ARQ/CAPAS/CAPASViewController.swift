@@ -166,8 +166,9 @@ extension CAPASViewController: UITableViewDelegate, UITableViewDataSource {
                             return }
                         
                         guard let id = movie.id else { return }
-                        
-                        
+                        var movieToEdit = ListMovies.FetchMovies.ViewModel.DisplayedMovies(id: id, title: title, description: description, year: year)
+                        self.interactor?.editMovies(movie: movieToEdit)
+  
                     }
                 )
             )
@@ -177,7 +178,7 @@ extension CAPASViewController: UITableViewDelegate, UITableViewDataSource {
         
         //MARK: Borrar
         let deleteButton = UIContextualAction(style: .destructive, title: "Borrar") { (_, _, _) in
-            
+            self.interactor?.deleteMovies(movie: movie)
         }
         
         let actions = UISwipeActionsConfiguration(actions: [deleteButton, editButton])

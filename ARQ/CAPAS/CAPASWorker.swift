@@ -14,15 +14,13 @@ protocol MoviesWorkerDelegate {
 class MoviesWorker: MovieAPIDelegate {
     var movieAPI: MovieAPIProtocol = MovieAPI()
     var delegate: MoviesWorkerDelegate?
-    
-    // MARK: Block implementation
+   
     func fetch(completion: @escaping ([Movie]) -> Void) {
         movieAPI.fetch { (movies) in
             completion(movies)
         }
     }
-    
-    // MARK: Delegate implementation
+  
     func fetch() {
         movieAPI.delegate = self
         movieAPI.fetch { _ in
@@ -31,6 +29,14 @@ class MoviesWorker: MovieAPIDelegate {
     
     func add(_ movie: ListMovies.FetchMovies.Add) {
         movieAPI.add(movie)
+    }
+    
+    func delete(_ movie: ListMovies.FetchMovies.ViewModel.DisplayedMovies) {
+        movieAPI.delete(movie)
+    }
+    
+    func edit(_ movie: ListMovies.FetchMovies.ViewModel.DisplayedMovies) {
+        movieAPI.edit(movie)
     }
     
     func movieAPI(movieAPI: MovieAPIProtocol, didFetchMovies movies: [Movie]) {

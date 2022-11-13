@@ -10,6 +10,8 @@ import UIKit
 protocol ListMoviesBusinessLogic {
     func fetchMovies(request: ListMovies.FetchMovies.Request)
     func addMovies(movie: ListMovies.FetchMovies.Add)
+    func deleteMovies(movie: ListMovies.FetchMovies.ViewModel.DisplayedMovies)
+    func editMovies(movie: ListMovies.FetchMovies.ViewModel.DisplayedMovies)
 }
 
 class ListMoviesInteractor: ListMoviesBusinessLogic, MoviesWorkerDelegate {
@@ -24,8 +26,15 @@ class ListMoviesInteractor: ListMoviesBusinessLogic, MoviesWorkerDelegate {
     }
     
     func addMovies(movie: ListMovies.FetchMovies.Add) {
-        print("*** MOVIE ADDED*** \(movie)")
         moviesWorker.add(movie)
+    }
+    
+    func deleteMovies(movie: ListMovies.FetchMovies.ViewModel.DisplayedMovies) {
+        moviesWorker.delete(movie)
+    }
+    
+    func editMovies(movie: ListMovies.FetchMovies.ViewModel.DisplayedMovies) {
+        moviesWorker.edit(movie)
     }
     
     func moviesWorker(moviesWorker: MoviesWorker, didFetchMovies movies: [Movie]) {

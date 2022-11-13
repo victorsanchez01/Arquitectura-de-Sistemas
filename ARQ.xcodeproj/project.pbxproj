@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		1119BA9E2913485B002A8B89 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1119BA9D2913485B002A8B89 /* DatabaseService.swift */; };
 		1119BAA12913559D002A8B89 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1119BAA02913559D002A8B89 /* Service.swift */; };
-		1199959F2912C39D00711541 /* SOAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199959E2912C39D00711541 /* SOAViewController.swift */; };
+		1199959F2912C39D00711541 /* APIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199959E2912C39D00711541 /* APIViewController.swift */; };
 		119995A12912C54600711541 /* CAPASViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119995A02912C54600711541 /* CAPASViewController.swift */; };
+		119DA690291E8B2D00EB355D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119DA68F291E8B2D00EB355D /* Model.swift */; };
 		119FB7AB29149F7700B7DB23 /* CAPASInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119FB7AA29149F7700B7DB23 /* CAPASInteractor.swift */; };
 		119FB7AD2914A7CB00B7DB23 /* CAPASModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119FB7AC2914A7CB00B7DB23 /* CAPASModels.swift */; };
 		119FB7AF2914A8CB00B7DB23 /* CAPASWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119FB7AE2914A8CB00B7DB23 /* CAPASWorker.swift */; };
@@ -32,8 +33,9 @@
 		0904ABB4EFCF6A7AA227BBFA /* Pods_ARQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1119BA9D2913485B002A8B89 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		1119BAA02913559D002A8B89 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
-		1199959E2912C39D00711541 /* SOAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOAViewController.swift; sourceTree = "<group>"; };
+		1199959E2912C39D00711541 /* APIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIViewController.swift; sourceTree = "<group>"; };
 		119995A02912C54600711541 /* CAPASViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPASViewController.swift; sourceTree = "<group>"; };
+		119DA68F291E8B2D00EB355D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		119FB7AA29149F7700B7DB23 /* CAPASInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPASInteractor.swift; sourceTree = "<group>"; };
 		119FB7AC2914A7CB00B7DB23 /* CAPASModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPASModels.swift; sourceTree = "<group>"; };
 		119FB7AE2914A8CB00B7DB23 /* CAPASWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPASWorker.swift; sourceTree = "<group>"; };
@@ -107,15 +109,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		11BBEFF22912ED500064C55D /* SOA */ = {
+		119DA691291FDA6600EB355D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1199959E2912C39D00711541 /* SOAViewController.swift */,
-				1119BA9F291354FD002A8B89 /* ApplicationService */,
+				119DA68F291E8B2D00EB355D /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		11BBEFF22912ED500064C55D /* API */ = {
+			isa = PBXGroup;
+			children = (
+				1199959E2912C39D00711541 /* APIViewController.swift */,
 				1119BAAC29137DC5002A8B89 /* DataService */,
 				1119BAAD29137EBF002A8B89 /* ServiceRegistration */,
+				119DA691291FDA6600EB355D /* Model */,
 			);
-			path = SOA;
+			path = API;
 			sourceTree = "<group>";
 		};
 		11BBEFF32912EEDD0064C55D /* CAPAS */ = {
@@ -162,8 +172,9 @@
 			children = (
 				119995A22912D98A00711541 /* MVC */,
 				581EF32D290ADD5C00F01AB0 /* SceneDelegate.swift */,
-				11BBEFF22912ED500064C55D /* SOA */,
+				11BBEFF22912ED500064C55D /* API */,
 				11BBEFF32912EEDD0064C55D /* CAPAS */,
+				1119BA9F291354FD002A8B89 /* ApplicationService */,
 				581EF331290ADD5C00F01AB0 /* Main.storyboard */,
 				581EF34B290B6EB900F01AB0 /* Cell */,
 				581EF334290ADD5F00F01AB0 /* Assets.xcassets */,
@@ -307,11 +318,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				119DA690291E8B2D00EB355D /* Model.swift in Sources */,
 				581EF330290ADD5C00F01AB0 /* MVCViewController.swift in Sources */,
 				581EF32C290ADD5C00F01AB0 /* AppDelegate.swift in Sources */,
 				119FB7B12914A97500B7DB23 /* CAPASApi.swift in Sources */,
 				119FB7AF2914A8CB00B7DB23 /* CAPASWorker.swift in Sources */,
-				1199959F2912C39D00711541 /* SOAViewController.swift in Sources */,
+				1199959F2912C39D00711541 /* APIViewController.swift in Sources */,
 				119FB7B32914AC6D00B7DB23 /* CAPASPresenter.swift in Sources */,
 				119FB7AD2914A7CB00B7DB23 /* CAPASModels.swift in Sources */,
 				581EF34A290B6EB400F01AB0 /* TableViewCellController.swift in Sources */,

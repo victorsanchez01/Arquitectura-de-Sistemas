@@ -11,6 +11,8 @@ import FirebaseFirestore
 protocol MovieAPIProtocol {
     func fetch(completion: @escaping ([Movie]) -> Void)
     func add(_ movie: ListMovies.FetchMovies.Add)
+    func delete(_ movie: ListMovies.FetchMovies.ViewModel.DisplayedMovies)
+    func edit(_ movie: ListMovies.FetchMovies.ViewModel.DisplayedMovies)
     var delegate: MovieAPIDelegate? { get set }
 }
 
@@ -49,7 +51,21 @@ class MovieAPI: NSObject, MovieAPIProtocol {
     }
     
     func add(_ movie: ListMovies.FetchMovies.Add) {
-        print("*** MOVIE API *** \(movie)")
+        db.collection("movielist")
+            .addDocument(data: ["title": movie.title, "description": movie.description, "year": movie.year])
     }
     
+    func delete(_ movie: ListMovies.FetchMovies.ViewModel.DisplayedMovies) {
+        db.collection("movielist").document(movie.id!).delete()
+    }
+    
+    func edit(_ movie: ListMovies.FetchMovies.ViewModel.DisplayedMovies){
+        db.collection("movielist")
+            .document(movie.id!)
+            .setData([
+                "title": movie.title,
+                "year": movie.year,
+                "description": movie.description
+            ])
+    }
 }
