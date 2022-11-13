@@ -96,7 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				119995A32912D9D800711541 /* Model */,
-				581EF32F290ADD5C00F01AB0 /* MVCViewController.swift */,
+				119DA692292084AC00EB355D /* ViewController */,
 			);
 			path = MVC;
 			sourceTree = "<group>";
@@ -115,6 +115,14 @@
 				119DA68F291E8B2D00EB355D /* Model.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		119DA692292084AC00EB355D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				581EF32F290ADD5C00F01AB0 /* MVCViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		11BBEFF22912ED500064C55D /* API */ = {
