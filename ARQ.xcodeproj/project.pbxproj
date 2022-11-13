@@ -72,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				581EF32B290ADD5C00F01AB0 /* AppDelegate.swift */,
+				581EF32D290ADD5C00F01AB0 /* SceneDelegate.swift */,
 			);
 			path = ApplicationService;
 			sourceTree = "<group>";
@@ -125,7 +126,7 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		11BBEFF22912ED500064C55D /* API */ = {
+		11BBEFF22912ED500064C55D /* RestAPI */ = {
 			isa = PBXGroup;
 			children = (
 				1199959E2912C39D00711541 /* APIViewController.swift */,
@@ -133,7 +134,7 @@
 				1119BAAD29137EBF002A8B89 /* ServiceRegistration */,
 				119DA691291FDA6600EB355D /* Model */,
 			);
-			path = API;
+			path = RestAPI;
 			sourceTree = "<group>";
 		};
 		11BBEFF32912EEDD0064C55D /* CAPAS */ = {
@@ -179,8 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				119995A22912D98A00711541 /* MVC */,
-				581EF32D290ADD5C00F01AB0 /* SceneDelegate.swift */,
-				11BBEFF22912ED500064C55D /* API */,
+				11BBEFF22912ED500064C55D /* RestAPI */,
 				11BBEFF32912EEDD0064C55D /* CAPAS */,
 				1119BA9F291354FD002A8B89 /* ApplicationService */,
 				581EF331290ADD5C00F01AB0 /* Main.storyboard */,
